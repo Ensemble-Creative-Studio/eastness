@@ -15,7 +15,8 @@ export function getProjects() {
             title,
             "thumbnail": thumbnail.asset->url,
             loopVideo,
-            "slug": slug.current
+            "slug": slug.current,
+            film
         }`
     )
 }
@@ -50,6 +51,12 @@ export function getLocations() {
 
 export function getLocation(slug) {
     return createClient(clientConfig).fetch(
-        groq`*[_type == "location" && slug.current == $slug][0]`,{ slug }
+        groq`*[_type == "location" && slug.current == $slug][0]{
+            ...,
+            gallery[]{
+                ...,
+                "url": asset->url
+            }
+        }`,{ slug }
     )
 }

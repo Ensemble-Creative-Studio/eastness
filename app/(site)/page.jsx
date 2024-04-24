@@ -8,7 +8,7 @@ export default async function Home() {
 
     return (
         <div className="flex flex-col gap-4 fixed w-full p-7 z-0">
-            <ProjectsList projects={projects} />
+            <ProjectsList projects={projects} showFilms={false} />
             <SoundButton/>
         </div>
     )
