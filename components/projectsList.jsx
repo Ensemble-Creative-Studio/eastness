@@ -2,8 +2,8 @@
 
 import { useRouter, useSearchParams } from "next/navigation.js";
 import VideoInteractions from "./videoInteractions.jsx";
-import Film from "./film.jsx";
 import { useEffect, useState } from "react";
+import VideoPlayer from "./utils/videoPlayer.jsx";
 
 
 export default function ProjectsList({ projects, showFilms }) {
@@ -58,7 +58,7 @@ export default function ProjectsList({ projects, showFilms }) {
                 </div>
             ))}
             <VideoInteractions/>
-            {showVideo && selectedProject && <Film filmUrl={selectedProject} onClose={handleCloseVideo}/>}
+            {showVideo && selectedProject && <VideoPlayer src={selectedProject} onClose={handleCloseVideo}/>}
         </div>
     );
 }
