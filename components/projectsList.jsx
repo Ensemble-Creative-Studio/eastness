@@ -13,11 +13,13 @@ export default function ProjectsList({ projects, showFilms }) {
     const searchParams = useSearchParams();
     const hasSearchParams = searchParams.has("film");
 
-    const updateUrl = (project) => {
+    // Display film and update url
+    const displayFilm = (project) => {
         const slug = project.slug;
         const filmUrl = project.film;
 
         if (showFilms) {
+            // Update URL
             if (!hasSearchParams) {
                 router.push(`?film=${slug}`, undefined, { shallow: true });
             }
@@ -26,17 +28,19 @@ export default function ProjectsList({ projects, showFilms }) {
         }
     }
 
+    // Display film if search params are in the url at page loading
     useEffect(() => {
         if (showFilms && hasSearchParams) {
             const slug = searchParams.get("film");
             const project = projects.find(project => project.slug === slug);
 
             if (project) {
-                updateUrl(project);
+                displayFilm(project);
             }
         }
     }, []);
     
+    // Hide film and update url
     const handleCloseVideo = () => {
         setShowVideo(false);
         const url = new URL(window.location.href);
@@ -48,7 +52,7 @@ export default function ProjectsList({ projects, showFilms }) {
             {projects.map((project) => (
                 <div key={project._id} className="relative slide inline-block">
                     <video src={project.loopVideo} autoPlay loop muted className="h-screen w-screen object-cover fixed top-0 left-0 hidden"></video>
-                        <button onClick={() => updateUrl(project)}>
+                        <button onClick={() => displayFilm(project)}>
                             <h2 className={`text-3xl z-10 relative inline-block ${showFilms ? "cursor-pointer" : "cursor-default"}`}>{project.title}</h2>
                         </button>
                 </div>

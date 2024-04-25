@@ -1,17 +1,66 @@
+"use client"
+
+import { PortableText } from "next-sanity";
 import Image from "next/image.js";
-import Link from "next/link.js";
+import { useRouter, useSearchParams } from "next/navigation.js";
+import { useEffect, useState } from "react";
+import Gallery from "./utils/gallery.jsx";
 
 export default function LocationsList({ locations }) {
+    const router = useRouter();
+    const [showGallery, setShowGallery] = useState(false);
+    const [selectedGallery, setSelectedGallery] = useState(null);
+    const [visibleImage, setVisibleImage] = useState(locations[0]);
+    const searchParams = useSearchParams();
+    const hasSearchParams = searchParams.has("gallery");
+
+    // Update background image
+    const handleMouseEnter = (location) => {
+        setVisibleImage(location);
+    }
+
+    // Display gallery and update url
+    const displayGallery = (location) => {
+        const slug = location.slug;
+
+        if (!hasSearchParams) {
+            router.push(`?gallery=${slug}`, undefined, { shallow: true });
+        }
+        setSelectedGallery(location);
+        setShowGallery(true);
+    }
+
+    // Display gallery if search params are in the url at page loading
+    useEffect(() => {
+        if (hasSearchParams) {
+            const slug = searchParams.get("gallery");
+            const location = locations.find(location => location.slug === slug);
+
+            if (location) {
+                displayGallery(location);
+            }
+        }
+    }, []);
+
+    // Hide gallery and update url
+    const handleCloseGallery = () => {
+        setShowGallery(false);
+        const url = new URL(window.location.href);
+        router.push(url.pathname, undefined, { shallow: true });
+    }
+
     return (
-        <div className="flex flex-col justify-start">
+        <div className="flex flex-col items-start">
             {locations.map((location, index) => (
-                <div key={location._id} className="relative slide inline-block group">
-                    <Image src={location.thumbnailImg} alt={location.name} width={1000} height={1000} className={`h-screen w-screen object-cover fixed top-0 left-0 ${index === 0 ? 'visible' : 'invisible group-hover:visible'}`}/>
-                    <Link href={`/locations/${location.slug}`}>
-                        <h2 className="text-3xl z-10 relative inline-block">{location.name}</h2>
-                    </Link>
-                </div>
+                <button 
+                    onClick={() => displayGallery(location)}
+                    onMouseEnter={() => handleMouseEnter(location)}
+                >
+                    <h2 className="text-3xl z-10 relative inline-block pointer-events-auto">{location.name}</h2>
+                </button>
             ))}
+            <Image src={visibleImage.thumbnailImg} alt={visibleImage.name} width={1000} height={1000} className="h-screen w-screen object-cover fixed top-0 left-0 z-0" />
+            {showGallery && selectedGallery && <Gallery location={selectedGallery} onClose={handleCloseGallery} />}
         </div>
     )
 }

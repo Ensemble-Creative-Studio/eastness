@@ -44,7 +44,11 @@ export function getLocations() {
         groq`*[_type == "location"]{
             ...,
             "thumbnailImg": thumbnail.asset->url,
-            "slug": slug.current
+            "slug": slug.current,
+            gallery[]{
+                ...,
+                "url": asset->url
+            }
         }`
     )
 }
