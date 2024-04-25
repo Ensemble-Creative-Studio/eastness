@@ -39,7 +39,14 @@ export default function Gallery({location, onClose}) {
                 </div>
                 <div className="flex flex-col absolute w-full">
                     {location.gallery.map((photo) => (
-                        <Image src={photo.url} alt="" width={500} height={500} className="w-full object-cover" />
+                        <Image 
+                            key={photo._key}
+                            src={photo.url} 
+                            alt="" 
+                            width={500} 
+                            height={500} 
+                            className="w-full object-cover" 
+                        />
                     ))}
                 </div>
             </div>

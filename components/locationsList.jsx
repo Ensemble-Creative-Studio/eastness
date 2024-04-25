@@ -1,6 +1,5 @@
 "use client"
 
-import { PortableText } from "next-sanity";
 import Image from "next/image.js";
 import { useRouter, useSearchParams } from "next/navigation.js";
 import { useEffect, useState } from "react";
@@ -51,8 +50,9 @@ export default function LocationsList({ locations }) {
 
     return (
         <div className="flex flex-col items-start">
-            {locations.map((location, index) => (
+            {locations.map((location) => (
                 <button 
+                    key={location._key}
                     onClick={() => displayGallery(location)}
                     onMouseEnter={() => handleMouseEnter(location)}
                 >
