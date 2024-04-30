@@ -55,16 +55,17 @@ export default function ProjectsList({ projects, showFilms }) {
     }
 
     return (
-        <div className="flex flex-col justify-start projects-list">
+        <div className="flex flex-col justify-start projects-list gap-3">
             {projects.map((project) => (
                 <div key={project._id} className="relative slide inline-block">
                     {!showFilms && <video src={project.loopVideo} autoPlay loop muted className="h-screen w-screen object-cover fixed top-0 left-0 hidden"></video>}
-                    <button 
+                    <h2 
                         onClick={() => displayFilm(project)}
                         onMouseEnter={() => handleMouseEnter(project)}
+                        className={`text-xl z-10 relative inline-block ${showFilms ? "cursor-pointer" : "cursor-default"}`}
                     >
-                        <h2 className={`text-3xl z-10 relative inline-block ${showFilms ? "cursor-pointer" : "cursor-default"}`}>{project.title}</h2>
-                    </button>
+                        {project.title}
+                    </h2>
                 </div>
             ))}
             {!showFilms && <VideoInteractions/>}

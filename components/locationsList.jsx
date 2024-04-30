@@ -49,15 +49,16 @@ export default function LocationsList({ locations }) {
     }
 
     return (
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start gap-3">
             {locations.map((location) => (
-                <button 
-                    key={location._key}
-                    onClick={() => displayGallery(location)}
-                    onMouseEnter={() => handleMouseEnter(location)}
-                >
-                    <h2 className="text-3xl z-10 relative inline-block pointer-events-auto">{location.name}</h2>
-                </button>
+                    <h2 
+                        key={location._key}
+                        onClick={() => displayGallery(location)}
+                        onMouseEnter={() => handleMouseEnter(location)}
+                        className="text-xl z-10 relative inline-block pointer-events-auto"
+                    >
+                        {location.name}
+                    </h2>
             ))}
             <Image src={visibleImage.thumbnailImg} alt={visibleImage.name} width={1000} height={1000} className="h-screen w-screen object-cover fixed top-0 left-0 z-0" />
             {showGallery && selectedGallery && <Gallery location={selectedGallery} onClose={handleCloseGallery} />}

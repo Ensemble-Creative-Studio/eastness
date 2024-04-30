@@ -12,6 +12,7 @@
     "@portabletext/react": "^3.0.18",
     "@sanity/icons": "^2.11.8",
     "@sanity/vision": "^3.37.2",
+    "framer-motion": "^11.1.7",
     "next": "14.1.4",
     "next-sanity": "^9.0.0",
     "react": "^18",
