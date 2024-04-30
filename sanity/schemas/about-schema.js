@@ -4,8 +4,16 @@ const about = {
     type: "document",
     fields: [
         {
-            name: "content",
-            title: "Content",
+            name: "description",
+            title: "Description",
+            type: "array",
+            of: [
+                { type: "block" }
+            ]
+        },
+        {
+            name: "contact",
+            title: "Contact",
             type: "array",
             of: [
                 { type: "block" }

@@ -3,6 +3,7 @@ import { structureTool } from "sanity/structure";
 import { schemaTypes } from "./sanity/schemas/index";
 import { DocumentTextIcon, HomeIcon } from "@sanity/icons";
 import { visionTool } from "@sanity/vision";
+import { vercelDeployTool } from "sanity-plugin-vercel-deploy";
 
 const config = defineConfig({
     projectId: "fcq5rsjt",
@@ -40,6 +41,7 @@ const config = defineConfig({
                     ]),
         }),
         visionTool(),
+        vercelDeployTool(),
     ],
     schema: { types: schemaTypes }
 })

@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation.js";
 import VideoInteractions from "./videoInteractions.jsx";
 import { useEffect, useState } from "react";
 import VideoPlayer from "./utils/videoPlayer.jsx";
+import Image from "next/image.js";
 
 
 export default function ProjectsList({ projects, showFilms }) {
@@ -12,7 +13,13 @@ export default function ProjectsList({ projects, showFilms }) {
     const [showVideo, setShowVideo] = useState(false);
     const searchParams = useSearchParams();
     const hasSearchParams = searchParams.has("film");
+    const [visibleImage, setVisibleImage] = useState(projects[0]);
 
+    // Update background image
+    const handleMouseEnter = (project) => {
+        setVisibleImage(project);
+    }
+    
     // Display film and update url
     const displayFilm = (project) => {
         const slug = project.slug;
@@ -51,13 +58,17 @@ export default function ProjectsList({ projects, showFilms }) {
         <div className="flex flex-col justify-start projects-list">
             {projects.map((project) => (
                 <div key={project._id} className="relative slide inline-block">
-                    <video src={project.loopVideo} autoPlay loop muted className="h-screen w-screen object-cover fixed top-0 left-0 hidden"></video>
-                        <button onClick={() => displayFilm(project)}>
-                            <h2 className={`text-3xl z-10 relative inline-block ${showFilms ? "cursor-pointer" : "cursor-default"}`}>{project.title}</h2>
-                        </button>
+                    {/* <video src={project.loopVideo} autoPlay loop muted className="h-screen w-screen object-cover fixed top-0 left-0 hidden"></video> */}
+                    <button 
+                        onClick={() => displayFilm(project)}
+                        onMouseEnter={() => handleMouseEnter(project)}
+                    >
+                        <h2 className={`text-3xl z-10 relative inline-block ${showFilms ? "cursor-pointer" : "cursor-default"}`}>{project.title}</h2>
+                    </button>
                 </div>
             ))}
-            <VideoInteractions/>
+            {/* <VideoInteractions/> */}
+            <Image src={visibleImage.thumbnail} alt="" width={1000} height={1000} className="h-screen w-screen object-cover fixed top-0 left-0" />
             {showVideo && selectedProject && <VideoPlayer src={selectedProject} onClose={handleCloseVideo}/>}
         </div>
     );
