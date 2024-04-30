@@ -10,7 +10,7 @@ export default async function About() {
 
     return (
         <div className="fixed">
-            <video src={projectToShow.film} autoPlay loop muted className="h-screen w-screen object-cover fixed top-0 left-0 z-0 blur scale-110"></video>
+            <video src={projectToShow.film} autoPlay loop muted className="h-screen w-screen object-cover fixed top-0 left-0 z-0 scale-150"></video>
             <div className="flex flex-col gap-4 w-full p-7 bg-white text-black max-w-readable fixed right-0 z-10 overflow-y-scroll h-full">
                 <h2 className="text-3xl">About us</h2>
                 <PortableText value={about[0].description} />
