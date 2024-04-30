@@ -1,6 +1,6 @@
 "use client"
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { PortableText } from "next-sanity";
 import Image from "next/image.js";
 import { useEffect, useRef } from "react"
@@ -26,7 +26,6 @@ export default function Gallery({location, onClose}) {
             document.removeEventListener('mousedown', handleCLickOutside);
         };
     }, [onClose]);
-    console.log(location);
 
     return (
         <div className="fixed top-0 left-0 w-screen h-screen bg-black bg-opacity-40 z-50">

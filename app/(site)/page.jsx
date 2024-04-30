@@ -1,5 +1,5 @@
 import ProjectsList from "@/components/projectsList.jsx";
-import SoundButton from "@/components/soundButton.jsx";
+import SoundButton from "@/components/utils/soundButton.jsx";
 import { getFeaturedProjects } from "@/sanity/sanity-utils.js"
 import { Suspense } from "react";
 

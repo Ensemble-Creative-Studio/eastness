@@ -107,6 +107,7 @@ export default function VideoPlayer({ src, onClose }) {
                     onTimeUpdate={handleTimeUpdate}
                     onEnded={handleVideoEnd}
                     onLoadedMetadata={handleLoadedMetadata}
+                    playsInline
                     autoPlay
                 >
                     <source src={src} type="video/mp4" />

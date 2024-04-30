@@ -1,7 +1,7 @@
 "use client"
 
 import { useRouter, useSearchParams } from "next/navigation.js";
-import VideoInteractions from "./videoInteractions.jsx";
+import VideoInteractions from "./utils/videoInteractions.jsx";
 import { useEffect, useState } from "react";
 import VideoPlayer from "./utils/videoPlayer.jsx";
 import Image from "next/image.js";
@@ -58,7 +58,7 @@ export default function ProjectsList({ projects, showFilms }) {
         <div className="flex flex-col justify-start projects-list gap-3">
             {projects.map((project) => (
                 <div key={project._id} className="relative slide inline-block">
-                    {!showFilms && <video src={project.loopVideo} autoPlay loop muted className="h-screen w-screen object-cover fixed top-0 left-0 hidden"></video>}
+                    {!showFilms && <video src={project.loopVideo} autoPlay loop muted playsInline className="h-screen w-screen object-cover fixed top-0 left-0 hidden"></video>}
                     <h2 
                         onClick={() => displayFilm(project)}
                         onMouseEnter={() => handleMouseEnter(project)}
