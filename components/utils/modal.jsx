@@ -50,7 +50,7 @@ export default function Modal({children, onClose, size}) {
             </motion.div>
             <motion.div
                 key="modal"
-                initial={{ x: size }}
+                initial={{ x: `${size}vw` }}
                 animate={{ 
                     x: 0,
                     transition: {
@@ -61,7 +61,7 @@ export default function Modal({children, onClose, size}) {
                     }
                 }}
                 exit={{ 
-                    x: size,
+                    x: `${size}vw`,
                     transition: {
                         type: 'spring',
                         mass: 1,
@@ -70,7 +70,7 @@ export default function Modal({children, onClose, size}) {
                     }
                 }}
             >
-                <div ref={modalRef} className="w-3/4 bg-white text-black z-50 fixed right-0 overflow-y-scroll h-screen">
+                <div ref={modalRef} className="bg-white text-black z-50 fixed right-0 overflow-y-scroll h-screen" style={{ width: `${size}vw`}}>
                     {children}
                 </div>
             </motion.div>
