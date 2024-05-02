@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-export default function RightModal({children, onClose}) {
+export default function Modal({children, onClose, size}) {
     const modalRef = useRef(null);
 
     useEffect(() => {
@@ -50,7 +50,7 @@ export default function RightModal({children, onClose}) {
             </motion.div>
             <motion.div
                 key="modal"
-                initial={{ x: '85vw' }}
+                initial={{ x: size }}
                 animate={{ 
                     x: 0,
                     transition: {
@@ -61,7 +61,7 @@ export default function RightModal({children, onClose}) {
                     }
                 }}
                 exit={{ 
-                    x: '85vw',
+                    x: size,
                     transition: {
                         type: 'spring',
                         mass: 1,
@@ -70,7 +70,7 @@ export default function RightModal({children, onClose}) {
                     }
                 }}
             >
-                <div ref={modalRef} className="w-5/6 bg-white text-black z-50 fixed right-0 overflow-y-scroll h-screen">
+                <div ref={modalRef} className="w-3/4 bg-white text-black z-50 fixed right-0 overflow-y-scroll h-screen">
                     {children}
                 </div>
             </motion.div>

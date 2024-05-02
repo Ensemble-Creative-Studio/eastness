@@ -5,6 +5,7 @@ import VideoInteractions from "./utils/videoInteractions.jsx";
 import { useEffect, useState } from "react";
 import VideoPlayer from "./utils/videoPlayer.jsx";
 import Image from "next/image.js";
+import { motion, AnimatePresence } from "framer-motion";
 
 
 export default function ProjectsList({ projects, showFilms }) {
@@ -13,7 +14,8 @@ export default function ProjectsList({ projects, showFilms }) {
     const [showVideo, setShowVideo] = useState(false);
     const searchParams = useSearchParams();
     const hasSearchParams = searchParams.has("film");
-    const [visibleImage, setVisibleImage] = useState(projects[0]);
+    const randomNumber = Math.floor(Math.random() * projects.length);
+    const [visibleImage, setVisibleImage] = useState(projects[randomNumber]);
 
     // Update background image
     const handleMouseEnter = (project) => {
@@ -69,8 +71,29 @@ export default function ProjectsList({ projects, showFilms }) {
                 </div>
             ))}
             {!showFilms && <VideoInteractions/>}
-            {showFilms && <Image src={visibleImage.thumbnail} alt="" width={1000} height={1000} className="h-screen w-screen object-cover fixed top-0 left-0" />}
-            {showVideo && selectedProject && <VideoPlayer src={selectedProject} onClose={handleCloseVideo}/>}
+            {showFilms && (
+                <>
+                <Image src={projects[randomNumber].thumbnail} alt="" width={1000} height={1000} className="h-screen w-screen object-cover fixed top-0 left-0 -z-10" />
+                <AnimatePresence wait>
+                    <motion.img
+                        key={visibleImage._id}
+                        src={visibleImage.thumbnail}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{
+                            type: 'spring',
+                            mass: 1,
+                            stiffness: 80,
+                            damping: 20
+                        }}
+                        alt={visibleImage.title}
+                        className="h-screen w-screen object-cover fixed top-0 left-0 z-0" />
+                </AnimatePresence></>
+            )}
+            <AnimatePresence>
+                {showVideo && selectedProject && <VideoPlayer src={selectedProject} onClose={handleCloseVideo}/>}
+            </AnimatePresence>
         </div>
     );
 }

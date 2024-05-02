@@ -23,7 +23,7 @@ export default function Header({aboutData}) {
     }
 
     return (
-        <header className="sticky top-0 left-0 p-7 flex justify-between items-baseline z-30">
+        <header className="sticky top-0 left-0 p-7 flex justify-between items-baseline z-30 bg-bottom-gradient">
             <Link href="/">
                 <h1 className="font-medium text-3xl uppercase">Eastness</h1>
             </Link>
