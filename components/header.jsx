@@ -21,7 +21,6 @@ export default function Header({aboutData}) {
     function HeaderLink({url, title}) {
         return <Link className='text-lg hover:opacity-60' href={url}>{title}</Link>
     }
-    // console.log(aboutData);
 
     return (
         <header className="sticky top-0 left-0 p-7 flex justify-between items-baseline z-30">
@@ -32,7 +31,7 @@ export default function Header({aboutData}) {
                 {headerLinks.map((link) => (
                     <HeaderLink key={link.title} url={link.url} title={link.title} />
                 ))}
-                <button className='text-lg hover:opacity-80 cursor-pointer' onClick={() => setShowAbout(true)}>About</button>
+                <button className='text-lg hover:opacity-60 cursor-pointer' onClick={() => setShowAbout(true)}>About</button>
             </nav>
             <AnimatePresence>{showAbout && <About about={aboutData} onClose={() => setShowAbout(false)}/> }</AnimatePresence>
         </header>
