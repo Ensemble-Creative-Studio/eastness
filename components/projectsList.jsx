@@ -64,7 +64,7 @@ export default function ProjectsList({ projects, showFilms }) {
                     <h2 
                         onClick={() => displayFilm(project)}
                         onMouseEnter={() => handleMouseEnter(project)}
-                        className={`text-xl z-10 relative inline-block ${showFilms ? "cursor-pointer" : "cursor-default"}`}
+                        className={`text-lg md:text-xl z-10 relative inline-block ${showFilms ? "cursor-pointer" : "cursor-default"}`}
                     >
                         {project.title}
                     </h2>

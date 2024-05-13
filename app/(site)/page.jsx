@@ -8,7 +8,7 @@ export default async function Home() {
     const projects = featured[0].projects;
 
     return (
-        <div className="flex flex-col gap-4 fixed w-full p-7 z-0">
+        <div className="flex flex-col gap-4 fixed w-full p-4 md:p-7 z-0">
             <Suspense>
                 <ProjectsList projects={projects} showFilms={false} />
             </Suspense>

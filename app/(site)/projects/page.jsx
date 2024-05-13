@@ -5,7 +5,7 @@ import { Suspense } from "react";
 export default async function Projects() {
     const projects = await getProjects();
     return (
-        <div className="relative w-full p-7">
+        <div className="relative w-full p-4 md:p-7">
             <Suspense>
                 <ProjectsList projects={projects} showFilms={true}/>
             </Suspense>

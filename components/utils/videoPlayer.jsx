@@ -75,7 +75,7 @@ export default function VideoPlayer({ src, onClose }) {
 
     return (
         <Modal onClose={onClose} size={100}>
-            <div className="fixed z-50 top-0 left-0 w-screen h-screen bg-black p-7 flex justify-center text-white">
+            <div className="fixed z-50 top-0 left-0 w-screen h-screen bg-black p-4 md:p-7 flex justify-center text-white">
                 <div className="relative h-full w-full">
                     {!isPlaying && (
                         <div className="absolute flex h-full w-full justify-center items-center">

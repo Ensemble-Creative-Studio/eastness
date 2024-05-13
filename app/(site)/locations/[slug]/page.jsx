@@ -5,7 +5,7 @@ import Image from "next/image.js";
 export default async function Location({params}) {
     const location = await getLocation(params.slug);
     return (
-        <div className="p-7">
+        <div className="p-4 md:p-7">
             <h2 className="text-3xl z-10 relative inline-block">{location.name}</h2>
             <div className="max-w-readable mt-3">
                 <PortableText value={location.description} />

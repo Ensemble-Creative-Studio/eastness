@@ -9,7 +9,7 @@ import Modal from "./modal.jsx";
 export default function Gallery({location, onClose}) {
     return (
         <Modal onClose={onClose} size={75}>
-            <div className="top-0 p-7 flex flex-col gap-7 pointer-events-none">
+            <div className="top-0 p-4 md:p-7 flex flex-col gap-7 pointer-events-none">
                 <h3 className="text-3xl">
                     {location.name}
                 </h3>

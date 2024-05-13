@@ -57,7 +57,7 @@ export default function LocationsList({ locations }) {
                         key={location._id}
                         onClick={() => displayGallery(location)}
                         onMouseEnter={() => handleMouseEnter(location)}
-                        className="text-xl z-10 relative inline-block pointer-events-auto cursor-pointer"
+                        className="text-lg md:text-xl z-10 relative inline-block pointer-events-auto cursor-pointer"
                     >
                         {location.name}
                     </h2>
