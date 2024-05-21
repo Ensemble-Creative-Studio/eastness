@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Modal from "./modal.jsx";
 
 export default function VideoPlayer({ src, onClose }) {
+    const filmUrl = src.film;
     const videoRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(true);
     const [isMuted, setIsMuted] = useState(false);
@@ -101,9 +102,10 @@ export default function VideoPlayer({ src, onClose }) {
                         playsInline
                         autoPlay
                     >
-                        <source src={src} type="video/mp4" />
+                        <source src={filmUrl} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
+                    <h2 className="absolute top-0 left-0">{src.title}</h2>
                     <button className="absolute top-0 right-0" onClick={onClose}>
                             Close
                     </button>

@@ -12,6 +12,11 @@ const project = {
             type: "string"
         },
         {
+            name: "listTitle",
+            title: "List title",
+            type: "string"
+        },
+        {
             name: "slug",
             title: "Slug",
             type: "slug",

@@ -25,14 +25,13 @@ export default function ProjectsList({ projects, showFilms }) {
     // Display film and update url
     const displayFilm = (project) => {
         const slug = project.slug;
-        const filmUrl = project.film;
 
         if (showFilms) {
             // Update URL
             if (!hasSearchParams) {
                 router.push(`?film=${slug}`, undefined, { shallow: true });
             }
-            setSelectedProject(filmUrl);
+            setSelectedProject(project);
             setShowVideo(true);
         }
     }
@@ -66,7 +65,7 @@ export default function ProjectsList({ projects, showFilms }) {
                         onMouseEnter={() => handleMouseEnter(project)}
                         className={`text-lg md:text-xl z-10 relative inline-block ${showFilms ? "cursor-pointer" : "cursor-default"}`}
                     >
-                        {project.title}
+                        {project.listTitle ? project.listTitle : project.title}
                     </h2>
                 </div>
             ))}

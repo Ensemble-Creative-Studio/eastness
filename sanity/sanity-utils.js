@@ -13,6 +13,7 @@ export function getProjects() {
             _id,
             _createdAt,
             title,
+            listTitle,
             "thumbnail": thumbnail.asset->url,
             loopVideo,
             "slug": slug.current,
