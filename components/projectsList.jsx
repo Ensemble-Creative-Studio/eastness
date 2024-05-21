@@ -57,7 +57,7 @@ export default function ProjectsList({ projects, showFilms }) {
     }
 
     return (
-        <div className="flex flex-col justify-start projects-list gap-3">
+        <div className="flex flex-col justify-start projects-list">
             {projects.map((project) => (
                 <div key={project._id} className="relative slide inline-block">
                     {!showFilms && <video src={project.loopVideo} autoPlay loop muted playsInline className="h-screen w-screen object-cover fixed top-0 left-0 hidden"></video>}

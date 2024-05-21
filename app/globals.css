@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+
+@font-face {
+  font-family: 'GT-Planar';
+  src: url(/public/fonts/GT-Planar-Italic-15-Regular-Trial.woff) format('woff');
+  font-style: italic;
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'GT-Planar';
+  src: url(/public/fonts/GT-Planar-Italic-15-Regular-Trial.woff) format('woff');
+  font-style: normal;
+  font-weight: 300;
+}  
+
+body, button {
+  font-family: 'GT-Planar', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+h1 {
   font-family: futura-pt, sans-serif;
+}
+a:hover:not(:has(h1)), button:hover, .cursor-pointer:hover {
+  font-style: italic;
+  font-weight: 400;
+}
+p {
+  text-transform: none;
 }

@@ -19,7 +19,7 @@ export default function Header({aboutData}) {
     ];
 
     function HeaderLink({url, title}) {
-        return <Link className='text-lg hover:opacity-60' href={url}>{title}</Link>
+        return <Link className='text-lg' href={url}>{title}</Link>
     }
 
     return (
@@ -31,7 +31,7 @@ export default function Header({aboutData}) {
                 {headerLinks.map((link) => (
                     <HeaderLink key={link.title} url={link.url} title={link.title} />
                 ))}
-                <button className='text-lg hover:opacity-60 cursor-pointer' onClick={() => setShowAbout(true)}>About</button>
+                <button className='text-lg cursor-pointer' onClick={() => setShowAbout(true)}>About</button>
             </nav>
             <AnimatePresence>{showAbout && <About about={aboutData} onClose={() => setShowAbout(false)}/> }</AnimatePresence>
         </header>
