@@ -5,10 +5,13 @@ import { PortableText } from "next-sanity";
 import Image from "next/image.js";
 import { useEffect, useRef } from "react"
 import Modal from "./modal.jsx";
+import useMediaQuery from "./useMediaQuery.jsx";
 
 export default function Gallery({location, onClose}) {
+    const isMedium = useMediaQuery('(min-width: 768px)');
+    let  size = 85; if (isMedium) { size =75; }
     return (
-        <Modal onClose={onClose} size={75}>
+        <Modal onClose={onClose} size={size}>
             <div className="top-0 p-4 md:p-7 flex flex-col gap-7 pointer-events-none">
                 <h3 className="text-3xl">
                     {location.name}

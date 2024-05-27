@@ -35,6 +35,8 @@ export default function VideoPlayer({ src, onClose }) {
             videoRef.current.webkitRequestFullscreen();
         } else if (videoRef.current.msRequestFullscreen) {
             videoRef.current.msRequestFullscreen();
+        } else if (videoRef.current.webkitEnterFullscreen) { // Pour iOS
+            videoRef.current.webkitEnterFullscreen();
         }
         setIsFullscreen(true);
     }
@@ -76,10 +78,10 @@ export default function VideoPlayer({ src, onClose }) {
 
     return (
         <Modal onClose={onClose} size={100}>
-            <div className="fixed z-50 top-0 left-0 w-screen h-screen bg-black p-4 md:p-7 flex justify-center text-white">
+            <div className="fixed z-50 top-0 left-0 w-screen h-svh bg-black p-4 md:p-7 flex justify-center text-white">
                 <div className="relative h-full w-full">
                     {!isPlaying && (
-                        <div className="absolute flex h-full w-full justify-center items-center">
+                        <div className="absolute flex h-full w-full justify-center items-center pointer-events-none">
                             <svg
                                 className='scaling fill-white'
                                 width="24"
@@ -105,10 +107,12 @@ export default function VideoPlayer({ src, onClose }) {
                         <source src={filmUrl} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
-                    <h2 className="absolute top-0 left-0">{src.title}</h2>
-                    <button className="absolute top-0 right-0" onClick={onClose}>
-                            Close
-                    </button>
+                    <div className="flex absolute top-0 justify-between items-start w-full">
+                        <h2 className="">{src.title}</h2>
+                        <button className="" onClick={onClose}>
+                                Close
+                        </button>
+                    </div>
                     <div className="absolute flex md:gap-6 bottom-4 md:left-0 w-full md:w-auto justify-between">
                         <button onClick={handlePlayPause}>
                             {isPlaying ? "Pause" : "Play"}

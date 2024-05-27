@@ -19,19 +19,19 @@ export default function Header({aboutData}) {
     ];
 
     function HeaderLink({url, title}) {
-        return <Link className='text-lg' href={url}>{title}</Link>
+        return <Link className='text-sm md:text-lg' href={url}>{title}</Link>
     }
 
     return (
         <header className="sticky top-0 left-0 p-4 md:p-7 flex justify-between items-baseline z-30 bg-bottom-gradient">
             <Link href="/">
-                <h1 className="font-medium text-3xl uppercase">Eastness</h1>
+                <h1 className="font-medium text-2xl md:text-3xl uppercase">Eastness</h1>
             </Link>
-            <nav className="flex gap-4">
+            <nav className="flex gap-2 md:gap-4">
                 {headerLinks.map((link) => (
                     <HeaderLink key={link.title} url={link.url} title={link.title} />
                 ))}
-                <button className='text-lg cursor-pointer' onClick={() => setShowAbout(true)}>About</button>
+                <button className='text-sm md:text-lg cursor-pointer' onClick={() => setShowAbout(true)}>About</button>
             </nav>
             <AnimatePresence>{showAbout && <About about={aboutData} onClose={() => setShowAbout(false)}/> }</AnimatePresence>
         </header>
