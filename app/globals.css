@@ -29,6 +29,13 @@ a:hover:not(:has(h1)), button:hover, .cursor-pointer:hover {
   font-style: italic;
   font-weight: 400;
 }
+.slide:hover h2 {
+  transform: translateX(10px);
+}
+.flex:has(.slide:hover) .slide:not(:hover) h2 {
+  opacity: .5;
+  filter: blur(1px);
+}
 p {
   text-transform: none;
 }

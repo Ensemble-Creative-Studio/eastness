@@ -53,14 +53,15 @@ export default function LocationsList({ locations }) {
     return (
         <div className="flex flex-col items-start">
             {locations.map((location) => (
-                    <h2 
-                        key={location._id}
-                        onClick={() => displayGallery(location)}
-                        onMouseEnter={() => handleMouseEnter(location)}
-                        className="text-lg md:text-xl z-10 relative inline-block pointer-events-auto cursor-pointer"
-                    >
-                        {location.name}
-                    </h2>
+                    <div key={location._id} className="slide cursor-pointer z-10">
+                        <h2
+                            onClick={() => displayGallery(location)}
+                            onMouseEnter={() => handleMouseEnter(location)}
+                            className="text-lg md:text-xl relative inline-block pointer-events-auto transition"
+                        >
+                            {location.name}
+                        </h2>
+                    </div>
             ))}
             <Image src={locations[randomNumber].thumbnailImg} alt="" width={1000} height={1000} className="h-screen w-screen object-cover fixed top-0 left-0 -z-10" />
             <AnimatePresence wait>
