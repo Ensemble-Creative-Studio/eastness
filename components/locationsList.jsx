@@ -57,7 +57,7 @@ export default function LocationsList({ locations }) {
                         <h2
                             onClick={() => displayGallery(location)}
                             onMouseEnter={() => handleMouseEnter(location)}
-                            className="text-lg md:text-xl relative inline-block pointer-events-auto transition"
+                            className="text-sm md:text-base relative inline-block pointer-events-auto transition"
                         >
                             {location.name}
                         </h2>

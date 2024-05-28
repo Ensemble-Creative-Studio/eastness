@@ -63,7 +63,7 @@ export default function ProjectsList({ projects, showFilms }) {
                     <h2 
                         onClick={() => displayFilm(project)}
                         onMouseEnter={() => handleMouseEnter(project)}
-                        className="text-lg md:text-xl z-10 relative inline-block transition"
+                        className="text-sm md:text-base z-10 relative inline-block transition"
                     >
                         {project.listTitle ? project.listTitle : project.title}
                     </h2>

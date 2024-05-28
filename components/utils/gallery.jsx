@@ -13,10 +13,10 @@ export default function Gallery({location, onClose}) {
     return (
         <Modal onClose={onClose} size={size}>
             <div className="top-0 p-4 md:p-7 flex flex-col gap-7 pointer-events-none">
-                <h3 className="text-3xl">
+                <h3 className="text-sm md:text-base">
                     {location.name}
                 </h3>
-                <div className="max-w-readable">
+                <div className="max-w-readable text-sm md:text-base">
                     <PortableText value={location.description} />
                 </div>
             </div>
