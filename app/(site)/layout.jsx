@@ -17,7 +17,7 @@ export default async function RootLayout({ children }) {
             </head>
             <body className="text-white bg-black">
                 <Header aboutData={about}/>
-                <main className="absolute bottom-0 left-0">
+                <main className="absolute top-0 left-0 h-full flex items-center">
                     {children}
                 </main>
             </body>

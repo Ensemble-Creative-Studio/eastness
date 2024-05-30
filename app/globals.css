@@ -26,7 +26,7 @@ h1 {
   font-family: futura-pt, sans-serif;
 }
 a:hover:not(:has(h1)), button:hover, .cursor-pointer:hover {
-  font-style: italic;
+  /* font-style: italic; */
   font-weight: 400;
 }
 .slide:hover h2 {
