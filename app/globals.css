@@ -5,13 +5,19 @@
 
 @font-face {
   font-family: 'GT-Planar';
-  src: url(/public/fonts/GT-Planar-Italic-15-Regular-Trial.woff) format('woff');
-  font-style: italic;
+  src: 
+    url(/public/fonts/GT-Planar-Regular.woff) format('woff'),
+    url(/public/fonts/GT-Planar-Regular.woff2) format('woff2'),
+    url(/public/fonts/GT-Planar-Regular.ttf) format('truetype');
+  font-style: normal;
   font-weight: 400;
 }
 @font-face {
   font-family: 'GT-Planar';
-  src: url(/public/fonts/GT-Planar-Italic-15-Regular-Trial.woff) format('woff');
+  src: 
+    url(/public/fonts/GT-Planar-Light.woff) format('woff'),
+    url(/public/fonts/GT-Planar-Light.woff2) format('woff2'),
+    url(/public/fonts/GT-Planar-Light.ttf) format('truetype');
   font-style: normal;
   font-weight: 300;
 }  
@@ -26,7 +32,6 @@ h1 {
   font-family: futura-pt, sans-serif;
 }
 a:hover:not(:has(h1)), button:hover, .cursor-pointer:hover {
-  /* font-style: italic; */
   font-weight: 400;
 }
 .slide:hover h2 {
